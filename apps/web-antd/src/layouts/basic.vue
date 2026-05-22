@@ -163,6 +163,7 @@ useVersionUpdate();
         :description="userStore.userInfo?.email || '未设置邮箱'"
         :tag-text="userStore.userInfo?.username"
         @logout="handleLogout"
+        @clear-preferences-and-logout="handleLogout"
       />
     </template>
     <template #notification>
