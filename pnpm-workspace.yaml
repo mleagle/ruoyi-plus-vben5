@@ -225,5 +225,6 @@ allowBuilds:
   '@parcel/watcher': true
   core-js: true
   esbuild: true
-  lefthook: true
+  json-editor-vue: false
+  lefthook: false
   vue-demi: true
