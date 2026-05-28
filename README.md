@@ -24,8 +24,8 @@ v5版本采用分仓(包)目录结构, 具体开发路径为: `根目录/apps/we
 
 | 组件/框架  | 版本   |
 | :--------- | :----- |
-| vben       | 5.5.9  |
-| antdv-next | 4.2.6  |
+| vben       | 5.6.0  |
+| antdv-next | 1.3.0  |
 | vue        | 3.5.13 |
 
 对应后端项目: **(分布式 5.X 分支 微服务 2.分支)**
@@ -34,11 +34,19 @@ v5版本采用分仓(包)目录结构, 具体开发路径为: `根目录/apps/we
 
 微服务 [RuoYi-Cloud-Plus](https://gitee.com/dromara/RuoYi-Cloud-Plus/tree/2.X/)
 
+## 赞助商
+
+- 万级算力服务 https://ku0.com/
+
 ## 预览
 
 admin 账号: admin admin123
 
 [预览地址点这里](http://vben5.dapdap.top)
+
+服务器由以下群友赞助(以下排名不分前后)
+
+依依-阿里/腾讯/华为云服务器高返, 疯狂的牛子Li, 四海升平(站长推荐https://ku0.com/), 疯狂的骡子Li, 疯狂的鸟哥Li疯狂的麦克斯, 消息必须回🤔, 群复读机(末初科技 mochu.tech), 大熊, 張Zcccccy, 等風來再離開, AI主理人
 
 ## WX Group
 
