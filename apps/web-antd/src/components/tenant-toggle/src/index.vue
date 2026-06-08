@@ -16,6 +16,7 @@ import { storeToRefs } from 'pinia';
 
 import { tenantDynamicClear, tenantDynamicToggle } from '#/api/system/tenant';
 import { useDictStore } from '#/store/dict';
+import { useGlobalLoadingStore } from '#/store/loading';
 import { useTenantStore } from '#/store/tenant';
 
 const { hasAccessByRoles } = useAccess();
@@ -67,13 +68,17 @@ const dictStore = useDictStore();
 const messageInstance = shallowRef<MessageType | null>();
 // loading加载中效果
 const loading = ref(false);
-
+const loadingStore = useGlobalLoadingStore();
+function setLoading(l: boolean) {
+  loading.value = l;
+  loadingStore.globalLoading = l;
+}
 /**
  * 选中租户的处理
  * @param tenantId tenantId
  * @param option 当前option
  */
-const handleSelect: SelectEmits['onSelect'] = async (
+const handleSelect: SelectEmits['select'] = async (
   tenantId: string,
   option: any,
 ) => {
@@ -82,7 +87,7 @@ const handleSelect: SelectEmits['onSelect'] = async (
     return;
   }
   try {
-    loading.value = true;
+    setLoading(true);
 
     await tenantDynamicToggle(tenantId);
     lastSelected.value = tenantId;
@@ -99,13 +104,13 @@ const handleSelect: SelectEmits['onSelect'] = async (
   } catch (error) {
     console.error(error);
   } finally {
-    loading.value = false;
+    setLoading(false);
   }
 };
 
 async function handleClear() {
   try {
-    loading.value = true;
+    setLoading(true);
 
     await tenantDynamicClear();
     // 关闭之前的message 只保留一条
@@ -121,7 +126,7 @@ async function handleClear() {
   } catch (error) {
     console.error(error);
   } finally {
-    loading.value = false;
+    setLoading(false);
   }
 }
 
