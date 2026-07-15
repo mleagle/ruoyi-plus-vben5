@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { CheckboxChangeEvent } from 'antdv-next/es/checkbox/interface';
-import type { DataNode } from 'antdv-next/es/tree';
+import type { CheckboxEmits, TreeProps } from 'antdv-next';
 
 import { computed, nextTick, onMounted, ref } from 'vue';
 
@@ -34,7 +33,7 @@ interface Props {
   /**
    * 树结构数据
    */
-  treeData?: DataNode[];
+  treeData?: TreeProps['treeData'];
 }
 
 /**
@@ -94,7 +93,7 @@ const allKeys = computed(() => {
   return treeToList(props.treeData).map((item: any) => item[idField]);
 });
 
-function handleCheckedAllChange(e: CheckboxChangeEvent) {
+const handleCheckedAllChange: CheckboxEmits['change'] = (e) => {
   // 这个用于展示
   checkedKeys.value = e.target.checked ? allKeys.value : [];
 }

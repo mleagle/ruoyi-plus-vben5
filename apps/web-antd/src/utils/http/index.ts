@@ -189,6 +189,7 @@ const alovaInstance = createAlova({
          * 我建议你改后端而不是前端来做兼容
          */
         // json数据的判断
+        // @ts-expect-error 忽略类型检查 因为content-type是string类型
         if (response.headers['content-type']?.includes?.('application/json')) {
           /**
            * 需要判断是否登录超时/401
@@ -316,7 +317,7 @@ const alovaInstance = createAlova({
           return Promise.reject(error);
         }
       } catch (error) {
-        throw new Error(error as unknown as string);
+        throw new Error(error as unknown as string, { cause: error });
       }
 
       const msg: string = (response?.data as any)?.msg ?? '';

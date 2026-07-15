@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { UploadFile } from 'antdv-next/es/upload/interface';
+
+import type { UploadFile } from 'antdv-next';
 
 import type { CustomGetter } from '#/components/upload/src/props';
 
@@ -18,8 +19,8 @@ import uploadModal from './upload-modal.vue';
 
 const singleImageId = ref('1905537674682916865');
 const singleFileId = ref('1905191167882518529');
-const multipleImageId = ref<string[]>(['1905537674682916865']);
-const multipleFileId = ref<string[]>(['1905191167882518529']);
+const multipleImageId = ref<string>('1905537674682916865');
+const multipleFileId = ref<string>('1905191167882518529');
 
 function handlePreview(file: UploadFile) {
   window.modal.info({

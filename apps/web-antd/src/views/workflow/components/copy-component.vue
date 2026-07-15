@@ -1,6 +1,5 @@
 <!--抄送组件-->
 <script setup lang="ts">
-import type { PropType } from 'vue';
 
 import type { User } from '#/api/system/user/model';
 
@@ -37,8 +36,8 @@ const [UserSelectModal, modalApi] = useVbenModal({
   connectedComponent: userSelectModal,
 });
 
-const userListModel = defineModel('userList', {
-  type: Array as PropType<User[]>,
+const userListModel = defineModel<User[]>('userList', {
+  // type: Array as PropType<User[]>,
   default: () => [],
 });
 

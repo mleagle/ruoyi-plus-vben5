@@ -8,7 +8,7 @@ import type { CategoryTree } from '#/api/workflow/category/model';
 import { onMounted, ref } from 'vue';
 
 import { SyncOutlined } from '@antdv-next/icons';
-import { InputSearch, Skeleton, Tree } from 'antdv-next';
+import { Input, Skeleton, SpaceCompact, Tree } from 'antdv-next';
 
 import { categoryTree } from '#/api/workflow/category';
 
@@ -75,18 +75,18 @@ function handleSelect(keys: Key[]) {
       >
         <!-- 固定在顶部 必须加上bg-background背景色 否则会产生'穿透'效果 -->
         <div class="bg-background z-100 sticky left-0 top-0 p-[8px]">
-          <InputSearch
-            v-model:value="searchValue"
-            :placeholder="$t('pages.common.search')"
-            size="small"
-            allow-clear
-          >
-            <template #enterButton>
-              <a-button @click="handleReload">
-                <SyncOutlined class="text-primary" />
-              </a-button>
-            </template>
-          </InputSearch>
+          <SpaceCompact class="w-full">
+            <Input
+              v-model:value="searchValue"
+              :placeholder="$t('pages.common.search')"
+              size="small"
+              allow-clear
+              @search="handleReload"
+            />
+            <a-button size="small" @click="handleReload">
+              <SyncOutlined class="text-primary" />
+            </a-button>
+          </SpaceCompact>
         </div>
         <div class="h-full overflow-x-hidden px-[8px]">
           <!-- TODO: 适配antdv-next -->
@@ -108,7 +108,7 @@ function handleSelect(keys: Key[]) {
               },
             }"
           >
-            <template #title="{ label }">
+            <template #titleRender="{ label }">
               <span v-if="label.includes(searchValue)">
                 {{ label.substring(0, label.indexOf(searchValue)) }}
                 <span class="text-primary">{{ searchValue }}</span>

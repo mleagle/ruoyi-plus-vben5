@@ -36,6 +36,7 @@ const params = {
  */
 const url = `${import.meta.env.VITE_GLOB_API_URL}/warm-flow-ui/index.html?${stringify(params)}`;
 
+// @ts-expect-error 忽略类型检查错误,其实有用到iframeRef
 const { iframeRef } = useWarmflowIframe();
 </script>
 

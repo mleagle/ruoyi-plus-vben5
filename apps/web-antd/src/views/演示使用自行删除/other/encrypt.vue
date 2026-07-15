@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// oxlint-disable no-console
 import { ref } from 'vue';
 
 import { JsonPreview, Page } from '@vben/common-ui';
@@ -11,7 +12,7 @@ import { alovaInstance } from '#/utils/http';
 const requestData = ref<any>({});
 const requestData2 = ref<any>({});
 async function apiRequest(name: string) {
-  const resp = await alovaInstance.post('/test/api/encrypt/request', name, {
+  const resp: any = await alovaInstance.post('/test/api/encrypt/request', name, {
     encrypt: true,
     isReturnNativeResponse: true,
   });

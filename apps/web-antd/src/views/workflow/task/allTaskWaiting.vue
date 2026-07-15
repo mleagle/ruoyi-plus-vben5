@@ -124,6 +124,7 @@ async function reload(resetFields: boolean = false) {
   loading.value = false;
   // 默认选中第一个
   if (taskList.value.length > 0) {
+    // oxlint-disable-next-line typescript/no-non-null-assertion
     const firstTask = taskList.value[0]!;
     currentTask.value = firstTask;
     handleCardClick(firstTask);
@@ -142,8 +143,7 @@ const handleScroll = debounce(async (e: Event) => {
   const { scrollTop, clientHeight, scrollHeight } = e.target as HTMLElement;
   // 判断是否滚动到底部
   const isBottom = scrollTop + clientHeight >= scrollHeight - bottomOffset;
-  console.log('scrollTop + clientHeight', scrollTop + clientHeight);
-  console.log('scrollHeight', scrollHeight);
+
 
   // 滚动到底部且没有加载完成
   if (isBottom && !isLoadComplete.value) {
@@ -215,9 +215,10 @@ onMounted(async () => {
             v-model:value="currentType"
             :options="typeOptions"
             block
-            class="mb-2"
+            class="!mb-2"
             @change="handleTypeChange"
           />
+
           <div class="flex items-center gap-1">
             <InputSearch
               v-model:value="formData.flowName"

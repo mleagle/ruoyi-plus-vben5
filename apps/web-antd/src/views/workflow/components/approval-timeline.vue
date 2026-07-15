@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import type { TimelineItemProps, TimelineProps } from 'antdv-next';
+import type { TimelineItemType,TimelineProps } from 'antdv-next';
 
 import type { Flow } from '#/api/workflow/instance/model';
 
@@ -24,7 +24,7 @@ const items = computed<TimelineProps['items']>(() => {
   return list.map((item) => {
     const isMultiplePerson = item.approver?.split(',').length > 1;
 
-    const result: TimelineItemProps = {
+    const result: TimelineItemType = {
       key: item.id,
       dot: (
         <div class="relative rounded-full border">
@@ -39,15 +39,15 @@ const items = computed<TimelineProps['items']>(() => {
           {!isMultiplePerson && (
             <VbenAvatar
               alt={item?.approveName ?? 'unknown'}
-              class="size-[36px] rounded-full bg-primary text-white"
+              class="bg-primary size-[36px] rounded-full text-white"
               src=""
             />
           )}
           <div
             class={cn(
-              'absolute bottom-0 right-[-2px]',
+              'absolute right-[-2px] bottom-0',
               'size-[12px] rounded-full bg-green-500',
-              'border-[2px] border-white',
+              'border-2 border-white',
             )}
           ></div>
         </div>
